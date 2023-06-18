@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./App/Pages/Login";
+import DashBoard from "./App/Pages/Dashboard/DashBoard";
+import Categorydetail from "./App/Pages/CategoryDetail/CategoryDetail";
+import QuantityTable from "./App/Pages/QuantitySize/QuantityTable";
+import PrintingDetails from "./App/Pages/PrintingDetails/PrintingDetails";
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Routes>
+<Route path="/" element={  <Login/>} />
+<Route path="/dashboard" element={  <DashBoard/>} />
+<Route path="/categorydetail" element={  <Categorydetail/>} />
+<Route path="/quantitytable" element={  <QuantityTable/>} />
+<Route path="/printingdetails" element={  <PrintingDetails/>} />
+    </Routes>
+    
+
+    </BrowserRouter>
   );
 }
 
