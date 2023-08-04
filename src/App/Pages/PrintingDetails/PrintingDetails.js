@@ -1,11 +1,15 @@
-import { Box } from '@mui/system'
+import { Box, width } from '@mui/system'
 import React from 'react'
 import NavBar from '../../Components/NavBar'
 import { Button, Checkbox, FormControlLabel, FormGroup, InputAdornment, OutlinedInput, Radio, RadioGroup, Typography } from '@mui/material'
 import { useState } from 'react';
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
+import { useNavigate } from "react-router-dom";
+
 
 export default function PrintingDetails() {
+  const navigate = useNavigate();
+
     const [checkboxValues, setCheckboxValues] = useState({
         Right: false,
         left: false,
@@ -52,8 +56,11 @@ export default function PrintingDetails() {
           ...data,
           [key]: value,
         });
-
       };
+
+      const handleTable=()=>{
+navigate('/tablecreation')
+      }
       
   return (
     <Box>
@@ -107,13 +114,15 @@ export default function PrintingDetails() {
             {/* <FormControlLabel   value="other" control={<Radio />} label="Other" /> */}
           </RadioGroup>
         </Box>
-      { doc && <OutlinedInput
+      { doc && <Box sx={{display:'flex' , flexDirection:'column', width:'100%'  , border:1 , justifyContent:'center' , alignItems:'center'}} >
+
+      <OutlinedInput
                   id="outlined-basic"
                   type="file"
                   label="cover image"
                   placeholder="Cover Image"
                   size="small"
-                  sx={{ mt: 2, bgcolor: "white", width: "80%" }}
+                  sx={{ mt: 2, bgcolor: "white", width: '80%' }}
                   endAdornment={
                     <InputAdornment position="end">
                       <DriveFolderUploadIcon />
@@ -122,7 +131,14 @@ export default function PrintingDetails() {
                   onChange={(e) => {
                     handleCoverImgChange(e);
                   }}
-                />}
+                />
+                <Typography sx={{m:1 , color:'black'}} >Or</Typography>
+                <Button sx={{border:1 , width:'80%' , backgroundColor:'#3457D5' , color:'white'}} onClick={handleTable} >
+                Create Table
+                </Button>
+      </Box>
+                
+                }
       <Box
           sx={{
             width: '100%',
